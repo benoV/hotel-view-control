@@ -16,6 +16,8 @@ h1 { max-width: 720px; margin: 0; color: var(--ink); font-size: clamp(38px, 7vw,
 .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding-bottom: 70px; }
 .features article, .notice { border: 1px solid var(--line); border-radius: 18px; background: #fff; }
 .features article { min-height: 180px; padding: 24px; }
+.features .feature-local { border-color: #b8d9f4; background: #f0f8ff; }
+.feature-local h2 { color: var(--blue-dark); }
 h2 { margin: 0 0 10px; font-size: 20px; letter-spacing: -.02em; }
 .features p, .notice p, .document p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.55; }
 .examples { padding-bottom: 70px; }
