@@ -1,6 +1,6 @@
 # Chrome Web Store assets
 
-- `promo-tile.svg` — 440×280 source for the small promotional tile. Export it as a PNG or JPEG at the same dimensions before uploading it to the Store.
-- `screenshot-required.md` — capture one genuine 1280×800 product screenshot after final live-site testing. Use a Booking.com or Agoda search-result page with the Hotel View Control menu visibly open; do not use a mockup as the Store screenshot.
+- `promo-tile.png` — 440×280 small promotional tile, ready for the Store listing. `promo-tile.svg` remains its editable source.
+- `hotel-view-control-in-use.png` — a genuine 1280×800 extension capture, with unrelated travel-site content and hotel details blurred for privacy.
 
 The extension package does not include this directory.

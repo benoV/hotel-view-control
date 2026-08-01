@@ -36,7 +36,7 @@ Use the Privacy tab to declare the website-content/browsing information required
 4. Click the extension icon in Chrome’s toolbar to open the saved-preferences panel and choose **Show** to restore a hotel.
 5. Use **Clear this site** or **Clear all** to remove stored preferences.
 
-## Assets still needed at submission time
+## Store assets ready to upload
 
-- Export `promo-tile.svg` as a 440×280 PNG or JPEG.
-- Add at least one genuine 1280×800 screenshot showing the actual extension in use. Blur or crop unrelated hotel-site details if necessary, but do not replace the surrounding page with generated content for the Store screenshot.
+- `promo-tile.png` — 440×280 small promotional tile.
+- `hotel-view-control-in-use.png` — 1280×800 screenshot of the actual extension in use. It uses conventional blurring to redact unrelated travel-site content and hotel details; no surrounding page content has been replaced with generated imagery.
