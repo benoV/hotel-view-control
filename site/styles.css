@@ -11,7 +11,6 @@ nav a:hover, nav a[aria-current="page"] { color: var(--blue-dark); }
 .hero { max-width: 690px; padding: 100px 0 76px; }
 .eyebrow { margin: 0 0 12px; color: var(--blue); font-size: 12px; font-weight: 700; letter-spacing: .06em; }
 h1 { max-width: 720px; margin: 0; color: var(--ink); font-size: clamp(38px, 7vw, 64px); line-height: 1.04; letter-spacing: -.045em; }
-.hero-motto { color: var(--blue-dark); }
 .lede { max-width: 620px; margin: 24px 0 0; color: var(--muted); font-size: 19px; line-height: 1.55; }
 .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding-bottom: 70px; }
 .features article, .notice { border: 1px solid var(--line); border-radius: 18px; background: #fff; }
@@ -29,7 +28,7 @@ h2 { margin: 0 0 10px; font-size: 20px; letter-spacing: -.02em; }
 .example-wide { grid-column: 1 / -1; }
 .example img { display: block; width: 100%; height: 100%; max-height: 320px; object-fit: cover; object-position: top; }
 .example-wide img { max-height: 440px; }
-.example figcaption { padding: 14px 16px 16px; color: var(--muted); font-size: 13px; line-height: 1.45; }
+.example figcaption { padding: 18px 20px 20px; color: var(--ink); font-size: 17px; font-weight: 600; line-height: 1.4; }
 .notice { margin-bottom: 76px; padding: 28px; }
 footer { display: flex; flex-wrap: wrap; gap: 10px 22px; padding: 28px 0 42px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
 .document { max-width: 720px; padding: 78px 0; }
