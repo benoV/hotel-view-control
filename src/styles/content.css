@@ -55,4 +55,6 @@
 .hvc-panel-actions .hvc-panel-danger { color: #ff9b9b; }
 .hvc-panel-empty { margin: 0; padding: 18px 4px; color: #aeb2bb; }
 .hvc-side-panel footer { margin-top: 22px; color: #8d929c; font-size: 11px; }
+.hvc-side-panel footer a { color: #a9d6fb; text-decoration: none; }
+.hvc-side-panel footer a:hover, .hvc-side-panel footer a:focus-visible { color: #fff; text-decoration: underline; }
 @media (prefers-reduced-motion: reduce) { .hvc-side-panel { transition: none; } }

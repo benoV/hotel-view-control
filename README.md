@@ -59,15 +59,12 @@ Privacy disclosure: *Hotel View Control processes the displayed hotel name, prop
 
 ## Support site and Chrome Web Store handoff
 
-This repository includes the static support site in `site/` and deploys it with `.github/workflows/deploy-pages.yml` after the repository is pushed to GitHub. Before linking the site from the extension or Chrome Web Store:
+This repository includes the static support site in `site/` and deploys it with `.github/workflows/deploy-pages.yml` after the repository is pushed to GitHub. It is live at [hotelviewcontrol.kingtidemedia.com](https://hotelviewcontrol.kingtidemedia.com/), with [privacy](https://hotelviewcontrol.kingtidemedia.com/privacy.html) and [support](https://hotelviewcontrol.kingtidemedia.com/support.html) pages.
 
-1. Configure GitHub Pages to use the GitHub Actions deployment source.
-2. Set the custom domain to `hotelviewcontrol.kingtidemedia.com` in GitHub Pages settings.
-3. Create the DNS `CNAME` record required by GitHub Pages, verify the domain in GitHub, and enable HTTPS.
-4. Confirm the landing page, `privacy.html`, and `support.html` load over HTTPS.
-5. Then add the verified URLs to the Chrome Web Store website, support, and privacy-policy fields; set developer/publisher identity to King Tide Media and maintainer/contact to Ben Vining.
+For the Chrome Web Store listing:
 
-Do not add the domain to `homepage_url` or make the in-extension publisher attribution clickable until the custom domain is live and verified.
+1. Add the landing, support, and privacy URLs to the Store listing.
+2. Set developer/publisher identity to King Tide Media and maintainer/contact to Ben Vining.
 
 ## Manual test checklist
 

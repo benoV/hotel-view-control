@@ -3,6 +3,7 @@
   "name": "Hotel View Control",
   "version": "0.1.0",
   "description": "Locally hide or dim hotel results you have already reviewed.",
+  "homepage_url": "https://hotelviewcontrol.kingtidemedia.com/",
   "permissions": ["storage"],
   "host_permissions": [
     "https://*.booking.com/*",

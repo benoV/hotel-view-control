@@ -222,7 +222,7 @@ function createSidePanel(): HTMLElement {
       <button type="button" data-hvc-clear-site>Clear this site</button>
       <button type="button" data-hvc-clear-all class="hvc-panel-danger">Clear all</button>
     </div>
-    <footer>By King Tide Media · Preferences stay on this device.</footer>`;
+    <footer>By <a href="https://hotelviewcontrol.kingtidemedia.com/" target="_blank" rel="noopener noreferrer">King Tide Media</a> · Preferences stay on this device.</footer>`;
   panel.querySelector<HTMLButtonElement>(".hvc-panel-close")!.addEventListener("click", () => {
     panel.classList.remove("hvc-side-panel-open");
   });
