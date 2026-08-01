@@ -12,6 +12,7 @@ nav a:hover, nav a[aria-current="page"] { color: var(--blue-dark); }
 .eyebrow { margin: 0 0 12px; color: var(--blue); font-size: 12px; font-weight: 700; letter-spacing: .06em; }
 h1 { max-width: 720px; margin: 0; color: var(--ink); font-size: clamp(38px, 7vw, 64px); line-height: 1.04; letter-spacing: -.045em; }
 .lede { max-width: 620px; margin: 24px 0 0; color: var(--muted); font-size: 19px; line-height: 1.55; }
+.availability { display: inline-block; margin: 22px 0 0; padding: 9px 12px; border: 1px solid #b8d9f4; border-radius: 999px; background: #f0f8ff; color: var(--blue-dark); font-size: 14px; font-weight: 650; }
 .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding-bottom: 70px; }
 .features article, .notice { border: 1px solid var(--line); border-radius: 18px; background: #fff; }
 .features article { min-height: 180px; padding: 24px; }
@@ -24,6 +25,7 @@ h2 { margin: 0 0 10px; font-size: 20px; letter-spacing: -.02em; }
 .control-guide-heading h2 { margin-bottom: 0; font-size: clamp(26px, 4vw, 36px); letter-spacing: -.035em; }
 .control-guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .control-example { display: flex; flex-direction: column; padding: 26px; border: 1px solid var(--line); border-radius: 18px; background: #fff; }
+.static-preview { margin: 0 0 10px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .06em; }
 .control-example > h3 { margin: 24px 0 8px; color: var(--ink); font-size: 19px; letter-spacing: -.02em; }
 .control-example > p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.55; }
 .menu-demo { width: 180px; padding: 6px; border: 1px solid #d7e0e9; border-radius: 12px; background: #fff; box-shadow: 0 10px 24px rgba(22, 41, 68, .14); }
