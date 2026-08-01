@@ -1,7 +1,14 @@
 import { agodaAdapter } from "../adapters/agoda";
 import { bookingAdapter } from "../adapters/booking";
 import type { SiteAdapter } from "../adapters/adapter";
-import { getPreferences, preferenceKey, removePreference, setPreference } from "../shared/storage";
+import {
+  getPreferences,
+  grantLocalDataConsent,
+  hasLocalDataConsent,
+  preferenceKey,
+  removePreference,
+  setPreference
+} from "../shared/storage";
 import type { HotelCard, PreferenceMap, VisibilityState } from "../shared/types";
 
 const CONTROL_ATTRIBUTE = "data-hvc-control";
@@ -15,10 +22,16 @@ let preferences: PreferenceMap = {};
 let scanTimer: number | undefined;
 let showHidden = false;
 let sidePanel: HTMLElement | undefined;
+let consentGranted = false;
+let consentPrompt: HTMLElement | undefined;
+let hiddenToggleAdded = false;
 
 function debounceScan(): void {
   window.clearTimeout(scanTimer);
-  scanTimer = window.setTimeout(() => void scan(), 120);
+  scanTimer = window.setTimeout(() => {
+    if (consentGranted) scan();
+    else showConsentPromptIfNeeded();
+  }, 120);
 }
 
 function applyState(card: HotelCard): void {
@@ -100,7 +113,13 @@ function createControl(card: HotelCard): HTMLElement {
 
 function scan(): void {
   if (!adapter) return;
-  for (const card of adapter.findCards(document)) {
+  const cards = adapter.findCards(document);
+  if (cards.length === 0) return;
+  if (!hiddenToggleAdded) {
+    addHiddenToggle();
+    hiddenToggleAdded = true;
+  }
+  for (const card of cards) {
     if (!card.element.querySelector(`[${CONTROL_ATTRIBUTE}]`)) {
       const host = card.controlHost ?? card.element;
       const position = getComputedStyle(host).position;
@@ -122,6 +141,34 @@ function addHiddenToggle(): void {
     toggle.textContent = showHidden ? "Hide restored hotels" : "Show hidden hotels";
   });
   document.body.append(toggle);
+}
+
+function showConsentPromptIfNeeded(): void {
+  if (!adapter || consentGranted || consentPrompt || !adapter.hasPotentialCards(document)) return;
+  consentPrompt = document.createElement("section");
+  consentPrompt.className = "hvc-consent";
+  consentPrompt.setAttribute("role", "dialog");
+  consentPrompt.setAttribute("aria-label", "Hotel View Control privacy notice");
+  consentPrompt.innerHTML = `
+    <p class="hvc-consent-eyebrow">HOTEL VIEW CONTROL</p>
+    <h2>Keep your hotel list organised.</h2>
+    <p>To hide or dim a hotel, Hotel View Control reads that listing’s displayed name, property identifier, and link. Your selections are stored only in Chrome on this device and are never sent anywhere.</p>
+    <div class="hvc-consent-actions">
+      <button type="button" data-hvc-consent-continue>Continue</button>
+      <button type="button" data-hvc-consent-not-now>Not now</button>
+    </div>`;
+  consentPrompt.querySelector<HTMLButtonElement>("[data-hvc-consent-continue]")!.addEventListener("click", async () => {
+    await grantLocalDataConsent();
+    consentGranted = true;
+    consentPrompt?.remove();
+    consentPrompt = undefined;
+    scan();
+  });
+  consentPrompt.querySelector<HTMLButtonElement>("[data-hvc-consent-not-now]")!.addEventListener("click", () => {
+    consentPrompt?.remove();
+    consentPrompt = undefined;
+  });
+  document.body.append(consentPrompt);
 }
 
 async function renderSidePanel(): Promise<void> {
@@ -205,17 +252,23 @@ function toggleSidePanel(): void {
 
 async function start(): Promise<void> {
   if (!adapter) return;
-  preferences = await getPreferences();
-  addHiddenToggle();
-  scan();
+  consentGranted = await hasLocalDataConsent();
+  if (consentGranted) {
+    preferences = await getPreferences();
+    scan();
+  } else {
+    showConsentPromptIfNeeded();
+  }
   new MutationObserver(debounceScan).observe(document.body, { childList: true, subtree: true });
   chrome.storage.onChanged.addListener((_changes, area) => {
-    if (area !== "local") return;
+    if (area !== "local" || !consentGranted) return;
     void getPreferences().then((next) => { preferences = next; scan(); });
   });
   document.addEventListener("click", () => closeMenus());
   chrome.runtime.onMessage.addListener((message) => {
-    if (message?.type === "hvc:toggle-panel") toggleSidePanel();
+    if (message?.type !== "hvc:toggle-panel") return;
+    if (consentGranted) toggleSidePanel();
+    else showConsentPromptIfNeeded();
   });
 }
 

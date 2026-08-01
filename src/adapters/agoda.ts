@@ -4,6 +4,10 @@ import type { SiteAdapter } from "./adapter";
 export const agodaAdapter: SiteAdapter = {
   site: "agoda",
 
+  hasPotentialCards(root: ParentNode): boolean {
+    return root.querySelector("li[data-hotelid]") !== null;
+  },
+
   findCards(root: ParentNode): HotelCard[] {
     /*
      * Agoda search-result cards expose a stable internal property identifier:

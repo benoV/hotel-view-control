@@ -13,6 +13,10 @@ function canonicalize(url: string): string | undefined {
 export const bookingAdapter: SiteAdapter = {
   site: "booking",
 
+  hasPotentialCards(root: ParentNode): boolean {
+    return root.querySelector('[data-testid="property-card"]') !== null;
+  },
+
   findCards(root: ParentNode): HotelCard[] {
     return Array.from(root.querySelectorAll<HTMLElement>(
       '[data-testid="property-card"]'

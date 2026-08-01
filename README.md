@@ -17,7 +17,7 @@ The extension only changes the local visual display of search-result cards. It d
 
 ## Privacy
 
-Hotel names, property identifiers, optional canonical URLs, and visibility preference are stored only in Chrome's local extension storage on the user's device. The extension has no accounts, analytics, tracking, remote code, external database, or outbound network service. It does not sell, share, or transmit user or browsing data.
+After the user confirms the first-use notice, hotel names, property identifiers, optional canonical URLs, and visibility preferences are processed and stored only in Chrome's local extension storage on the user's device. The extension has no accounts, analytics, tracking, remote code, external database, or outbound network service. It does not sell, share, or transmit user or browsing data.
 
 ## Development and loading
 
@@ -55,7 +55,7 @@ Short description: *Locally hide or dim hotel results you have already reviewed 
 
 Full description: *Hotel View Control makes hotel search results easier to manage. Mark a result as hidden or dimmed, and restore it whenever you want. Your preferences are stored only in your browser and are reapplied while you browse supported hotel search pages. The extension changes only your local view of result cards; it never changes prices, ratings, availability, booking actions, checkout, payments, reviews, rankings, or ads. Hotel View Control is independent and is not affiliated with Booking.com, Agoda, Loom, or their parent companies.*
 
-Privacy disclosure: *The extension stores hotel visibility preferences locally in Chrome extension storage. It does not collect, transmit, sell, or share personal information, browsing activity, or hotel data.*
+Privacy disclosure: *Hotel View Control processes the displayed hotel name, property identifier, and optional property URL only when you choose to hide or dim a listing. This information and your visibility preference are stored locally in Chrome on your device and are never transmitted, sold, shared, used for analytics, or used for advertising.*
 
 ## Support site and Chrome Web Store handoff
 

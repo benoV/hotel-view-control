@@ -1,6 +1,16 @@
 import type { HotelPreference, PreferenceMap, SiteId, VisibilityState } from "./types";
 
 const STORAGE_KEY = "hotelViewControl.preferences.v1";
+const CONSENT_KEY = "hotelViewControl.localDataConsent.v1";
+
+export async function hasLocalDataConsent(): Promise<boolean> {
+  const result = await chrome.storage.local.get(CONSENT_KEY);
+  return result[CONSENT_KEY] === true;
+}
+
+export async function grantLocalDataConsent(): Promise<void> {
+  await chrome.storage.local.set({ [CONSENT_KEY]: true });
+}
 
 export function preferenceKey(site: SiteId, hotelId: string): string {
   return `${site}:${hotelId}`;
