@@ -11,6 +11,7 @@ nav a:hover, nav a[aria-current="page"] { color: var(--blue-dark); }
 .hero { max-width: 690px; padding: 100px 0 76px; }
 .eyebrow { margin: 0 0 12px; color: var(--blue); font-size: 12px; font-weight: 700; letter-spacing: .06em; }
 h1 { max-width: 720px; margin: 0; color: var(--ink); font-size: clamp(38px, 7vw, 64px); line-height: 1.04; letter-spacing: -.045em; }
+.hero-motto { color: var(--blue-dark); }
 .lede { max-width: 620px; margin: 24px 0 0; color: var(--muted); font-size: 19px; line-height: 1.55; }
 .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding-bottom: 70px; }
 .features article, .notice { border: 1px solid var(--line); border-radius: 18px; background: #fff; }
