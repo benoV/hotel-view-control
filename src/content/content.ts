@@ -40,8 +40,19 @@ function applyState(card: HotelCard): void {
   card.element.classList.toggle("hvc-card-hidden", state === "hidden");
   card.element.classList.toggle("hvc-card-dimmed", state === "dimmed");
   card.element.dataset.hvcState = state ?? "visible";
+  applyMapMarkerState(card.hotelId, state);
   const trigger = card.element.querySelector<HTMLButtonElement>("[data-hvc-trigger]");
   if (trigger) trigger.textContent = state === "dimmed" ? "Dimmed" : state === "hidden" ? "Hidden" : "Hide";
+}
+
+function applyMapMarkerState(hotelId: string, state?: VisibilityState): void {
+  if (adapter?.site !== "agoda") return;
+  const markerId = CSS.escape(hotelId);
+  document.querySelectorAll<HTMLElement>(`[data-element-name="map-search-property-marker"][data-id="${markerId}"]`).forEach((marker) => {
+    const markerIcon = marker.closest<HTMLElement>(".leaflet-marker-icon") ?? marker;
+    markerIcon.classList.toggle("hvc-map-marker-hidden", state === "hidden");
+    markerIcon.classList.toggle("hvc-map-marker-dimmed", state === "dimmed");
+  });
 }
 
 function closeMenus(except?: HTMLElement): void {

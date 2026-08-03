@@ -3,6 +3,8 @@
 .hvc-show-hidden .hvc-card-hidden { display: block !important; outline: 1px solid #78b6e8 !important; outline-offset: 2px; }
 .hvc-card-dimmed { position: relative !important; isolation: isolate; }
 .hvc-card-dimmed::after { content: ""; position: absolute; inset: 0; z-index: 10; pointer-events: none; background: rgba(232, 245, 255, .76); }
+.hvc-map-marker-hidden { display: none !important; }
+.hvc-map-marker-dimmed { opacity: .32 !important; filter: saturate(.3); }
 .hvc-control, .hvc-control * { box-sizing: border-box; }
 .hvc-control { --hvc-blue: #2587dc; --hvc-ink: #1d2d44; --hvc-muted: #61738a; --hvc-border: #d7e0e9; --hvc-pale-blue: #edf7ff; position: absolute; top: 10px; right: 10px; z-index: 20; font: 500 13px/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--hvc-ink); }
 .hvc-trigger, .hvc-menu button, .hvc-hidden-toggle { appearance: none; border: 1px solid var(--hvc-border); background: #fff; color: var(--hvc-ink); box-shadow: 0 2px 7px rgba(22, 41, 68, .13); cursor: pointer; font: inherit; }
