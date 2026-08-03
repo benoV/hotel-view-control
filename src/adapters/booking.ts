@@ -14,10 +14,35 @@ export const bookingAdapter: SiteAdapter = {
   site: "booking",
 
   hasPotentialCards(root: ParentNode): boolean {
-    return root.querySelector('[data-testid="property-card"]') !== null;
+    return root.querySelector('[data-testid="property-card"], [data-testid="property-list-map-card"]') !== null;
   },
 
   findCards(root: ParentNode): HotelCard[] {
+    /*
+     * Booking.com's map is an overlay that leaves regular result cards in the
+     * document. When it is open, use only its cards so page controls cannot
+     * remain above the independently scrolling map list.
+     */
+    const mapCards = Array.from(root.querySelectorAll<HTMLElement>('[data-testid="property-list-map-card"]'));
+    if (mapCards.length > 0) {
+      return mapCards.flatMap((element) => {
+        const titleLink = element.querySelector<HTMLAnchorElement>('[data-testid="header-title"] a[href]');
+        const canonicalUrl = titleLink ? canonicalize(titleLink.href) : undefined;
+        const hotelId = canonicalUrl;
+        const hotelName = titleLink?.textContent?.trim();
+        if (!hotelId || !hotelName) return [];
+        return [{
+          element,
+          hotelId,
+          hotelName,
+          canonicalUrl,
+          // The image is an interactive element. Mount beside it on the map
+          // card itself so the extension does not nest a button in a button.
+          controlHost: element
+        }];
+      });
+    }
+
     return Array.from(root.querySelectorAll<HTMLElement>(
       '[data-testid="property-card"]'
     )).flatMap((element) => {
