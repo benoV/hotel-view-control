@@ -114,6 +114,20 @@ function createControl(card: HotelCard): HTMLElement {
 function scan(): void {
   if (!adapter) return;
   const cards = adapter.findCards(document);
+  const activeElements = new Set(cards.map((card) => card.element));
+
+  // Agoda keeps the ordinary result cards mounted behind its map overlay.
+  // Remove controls from any card that is not part of the active layout so
+  // they cannot appear fixed above the overlay while the map list scrolls.
+  document.querySelectorAll<HTMLElement>(`[${CONTROL_ATTRIBUTE}]`).forEach((control) => {
+    if (!cards.some((card) => card.element.contains(control))) control.remove();
+  });
+  document.querySelectorAll<HTMLElement>(".hvc-card-hidden, .hvc-card-dimmed, [data-hvc-state]").forEach((element) => {
+    if (activeElements.has(element)) return;
+    element.classList.remove("hvc-card-hidden", "hvc-card-dimmed");
+    delete element.dataset.hvcState;
+  });
+
   if (cards.length === 0) return;
   if (!hiddenToggleAdded) {
     addHiddenToggle();
