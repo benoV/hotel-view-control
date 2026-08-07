@@ -13,6 +13,10 @@ nav a:hover, nav a[aria-current="page"] { color: var(--blue-dark); }
 h1 { max-width: 720px; margin: 0; color: var(--ink); font-size: clamp(38px, 7vw, 64px); line-height: 1.04; letter-spacing: -.045em; }
 .lede { max-width: 620px; margin: 24px 0 0; color: var(--muted); font-size: 19px; line-height: 1.55; }
 .availability { display: inline-block; margin: 22px 0 0; padding: 9px 12px; border: 1px solid #b8d9f4; border-radius: 999px; background: #f0f8ff; color: var(--blue-dark); font-size: 14px; font-weight: 650; }
+.hero-action { margin: 14px 0 0; }
+.install-button { display: inline-flex; align-items: center; min-height: 44px; padding: 11px 17px; border-radius: 12px; background: var(--blue); color: #fff; font-size: 15px; font-weight: 700; line-height: 1; text-decoration: none; box-shadow: 0 3px 10px rgba(16, 82, 159, .18); }
+.install-button:hover, .install-button:focus-visible { background: var(--blue-dark); outline: 2px solid rgba(37, 135, 220, .35); outline-offset: 3px; }
+.install-link { font-weight: 700; }
 .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding-bottom: 70px; }
 .features article, .notice { border: 1px solid var(--line); border-radius: 18px; background: #fff; }
 .features article { min-height: 180px; padding: 24px; }
