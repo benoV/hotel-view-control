@@ -11,6 +11,7 @@ nav a:hover, nav a[aria-current="page"] { color: var(--blue-dark); }
 .hero { max-width: 690px; padding: 100px 0 76px; }
 .eyebrow { margin: 0 0 12px; color: var(--blue); font-size: 12px; font-weight: 700; letter-spacing: .06em; }
 h1 { max-width: 720px; margin: 0; color: var(--ink); font-size: clamp(38px, 7vw, 64px); line-height: 1.04; letter-spacing: -.045em; }
+.headline-emphasis { color: var(--blue); }
 .lede { max-width: 620px; margin: 24px 0 0; color: var(--muted); font-size: 19px; line-height: 1.55; }
 .availability { display: inline-block; margin: 22px 0 0; padding: 9px 12px; border: 1px solid #b8d9f4; border-radius: 999px; background: #f0f8ff; color: var(--blue-dark); font-size: 14px; font-weight: 650; }
 .hero-action { margin: 14px 0 0; }
